@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;500&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F5F0E8;
+  color: #2D2D2D;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
+
+.btn-primary {
+  @apply bg-olive text-white px-7 py-3.5 rounded hover:bg-olive-dark transition-colors;
+}
+
+.btn-secondary {
+  @apply border border-taupe text-charcoal px-6 py-3 rounded hover:bg-cream transition-colors;
+}
+
+.card {
+  @apply bg-surface border border-border-light rounded-lg p-4 hover:border-taupe transition-colors;
+}
+
+.input {
+  @apply w-full border border-border-light rounded px-4 py-3 focus:border-olive focus:outline-none bg-white;
+}
+
+.label {
+  @apply block text-sm text-warm-gray mb-2;
+}
