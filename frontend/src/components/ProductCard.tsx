@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface Product {
   id: string
@@ -27,8 +28,10 @@ export default function ProductCard({ product }: { product: Product }) {
           <Image
             src={imageUrl}
             alt={product.name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            width={640}
+            height={480}
+            sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+            className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
           <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors flex items-center justify-center">
             <span className="opacity-0 group-hover:opacity-100 text-white bg-charcoal/70 px-3 py-1 rounded text-sm transition-opacity">
@@ -37,7 +40,9 @@ export default function ProductCard({ product }: { product: Product }) {
           </div>
         </div>
         <p className="text-xs text-warm-gray uppercase tracking-wide mb-1">{product.category}</p>
-        <h3 className="font-display text-lg mb-2">{product.name}</h3>
+        <Link href={`/products/${product.id}`} className="block">
+          <h3 className="font-display text-lg mb-2 hover:text-olive transition-colors">{product.name}</h3>
+        </Link>
         <p className="text-warm-gray text-sm mb-4">Contact for price</p>
         <a
           href={`https://wa.me/6281234480282?text=Halo%20Amoraga%20Creative%2C%20saya%20tertarik%20dengan%20${encodeURIComponent(product.name)}`}
@@ -47,6 +52,12 @@ export default function ProductCard({ product }: { product: Product }) {
         >
           Inquire via WhatsApp
         </a>
+        <Link
+          href={`/products/${product.id}`}
+          className="block w-full text-center text-sm py-2 px-3 border border-olive text-olive rounded hover:bg-olive hover:text-cream transition-colors mb-2"
+        >
+          View Details
+        </Link>
         <div className="flex gap-2">
           {product.tokopediaUrl && (
             <a
@@ -90,6 +101,7 @@ export default function ProductCard({ product }: { product: Product }) {
               alt={product.name}
               width={800}
               height={600}
+              sizes="(min-width: 768px) 768px, 100vw"
               className="w-full h-auto max-h-[70vh] object-contain rounded"
             />
             <div className="mt-4 text-center text-cream">

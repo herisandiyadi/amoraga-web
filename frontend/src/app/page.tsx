@@ -31,13 +31,25 @@ export default async function Home() {
       
       {/* Hero Section - Full-bleed background */}
       <section className="relative overflow-hidden min-h-[80vh] lg:min-h-[90vh] flex items-center">
-        <Image
-          src="/hero-bg.jpg"
-          alt="Bedroom interior with sculptural mirror"
-          fill
-          priority
-          className="object-cover object-top -z-10"
-        />
+        <picture>
+          <source
+            media="(max-width: 640px)"
+            srcSet="/hero-bg-mobile.webp"
+            type="image/webp"
+          />
+          <source
+            media="(max-width: 1024px)"
+            srcSet="/hero-bg-tablet.webp"
+            type="image/webp"
+          />
+          <img
+            src="/hero-bg.webp"
+            alt="Bedroom interior with sculptural mirror"
+            fetchPriority="high"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover object-top -z-10"
+          />
+        </picture>
         <div className="absolute inset-0 bg-charcoal/40 -z-10" />
         <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32 w-full">
           <div className="max-w-2xl text-cream">
